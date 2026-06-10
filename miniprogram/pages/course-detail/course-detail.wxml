@@ -1,0 +1,51 @@
+<!--pages/course-detail/course-detail.wxml-->
+<view class="container">
+  <view class="loading-container" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="detail-content" wx:elif="{{course}}">
+    <view class="course-header" style="background-color: {{course.color}};">
+      <view class="course-name">{{course.courseName}}</view>
+      <view class="course-time">
+        {{dayNames[course.dayOfWeek-1]}} 第{{course.startSlot}}-{{course.endSlot}}节
+      </view>
+    </view>
+
+    <view class="detail-list">
+      <view class="detail-item" wx:if="{{course.teacher}}">
+        <view class="detail-label">任课教师</view>
+        <view class="detail-value">{{course.teacher}}</view>
+      </view>
+
+      <view class="detail-item" wx:if="{{course.location}}">
+        <view class="detail-label">上课地点</view>
+        <view class="detail-value">{{course.location}}</view>
+      </view>
+
+      <view class="detail-item">
+        <view class="detail-label">周类型</view>
+        <view class="detail-value">{{weekTypeNames[course.weekType] || '每周'}}</view>
+      </view>
+
+      <view class="detail-item" wx:if="{{course.weekNumbers && course.weekNumbers.length > 0}}">
+        <view class="detail-label">上课周次</view>
+        <view class="detail-value">第{{course.weekNumbers.join('、')}}周</view>
+      </view>
+
+      <view class="detail-item" wx:if="{{course.remark}}">
+        <view class="detail-label">备注</view>
+        <view class="detail-value remark">{{course.remark}}</view>
+      </view>
+    </view>
+
+    <view class="action-buttons">
+      <button class="edit-btn" bindtap="onEdit">编辑课程</button>
+      <button class="delete-btn" bindtap="onDelete">删除课程</button>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text>课程不存在</text>
+  </view>
+</view>
