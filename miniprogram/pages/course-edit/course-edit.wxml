@@ -1,0 +1,110 @@
+<!--pages/course-edit/course-edit.wxml-->
+<view class="container">
+  <form bindsubmit="onSubmit">
+    <view class="form-item">
+      <view class="form-label required">课程名称</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入课程名称" 
+        value="{{courseName}}"
+        data-field="courseName"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">任课教师</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入教师姓名" 
+        value="{{teacher}}"
+        data-field="teacher"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">上课地点</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入教室地点" 
+        value="{{location}}"
+        data-field="location"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="form-label required">星期</view>
+      <picker mode="selector" range="{{dayOptions}}" value="{{dayIndex}}" bindchange="onDayChange">
+        <view class="form-picker">
+          <text>{{dayOptions[dayIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label required">开始节次</view>
+      <picker mode="selector" range="{{slotOptions}}" value="{{startSlotIndex}}" bindchange="onStartSlotChange">
+        <view class="form-picker">
+          <text>{{slotOptions[startSlotIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label required">结束节次</view>
+      <picker mode="selector" range="{{slotOptions}}" value="{{endSlotIndex}}" bindchange="onEndSlotChange">
+        <view class="form-picker">
+          <text>{{slotOptions[endSlotIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">周类型</view>
+      <picker mode="selector" range="{{weekTypeOptions}}" value="{{weekTypeIndex}}" bindchange="onWeekTypeChange">
+        <view class="form-picker">
+          <text>{{weekTypeOptions[weekTypeIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">课程颜色</view>
+      <view class="color-list">
+        <view 
+          class="color-item {{colorIndex === index ? 'active' : ''}}" 
+          wx:for="{{colors}}" 
+          wx:key="index"
+          style="background-color: {{item}};"
+          data-index="{{index}}"
+          bindtap="onColorSelect"
+        >
+          <text wx:if="{{colorIndex === index}}">✓</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">备注</view>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入备注信息" 
+        value="{{remark}}"
+        data-field="remark"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <view class="form-actions">
+      <button class="submit-btn" form-type="submit" bindtap="onSubmit" disabled="{{submitting}}">
+        {{isEdit ? '保存修改' : '添加课程'}}
+      </button>
+    </view>
+  </form>
+</view>
