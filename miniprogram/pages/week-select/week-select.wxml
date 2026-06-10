@@ -1,0 +1,63 @@
+<!--pages/week-select/week-select.wxml-->
+<view class="container">
+  <view class="loading-container" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="week-list" wx:else>
+    <view 
+      class="week-item {{item._id === currentWeekId ? 'active' : ''}}" 
+      wx:for="{{weeks}}" 
+      wx:key="_id"
+      data-id="{{item._id}}"
+      bindtap="onSelectWeek"
+    >
+      <view class="week-info">
+        <view class="week-name">{{item.weekName}}</view>
+        <view class="week-tag" wx:if="{{item._id === currentWeekId}}">当前</view>
+      </view>
+      <view class="week-actions">
+        <view 
+          class="delete-btn" 
+          catchtap="onDeleteWeek" 
+          data-id="{{item._id}}" 
+          data-name="{{item.weekName}}"
+        >删除</view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{weeks.length === 0}}">
+      <text class="empty-text">暂无周次</text>
+      <text class="empty-tip">点击下方按钮添加周次</text>
+    </view>
+  </view>
+
+  <view class="add-btn" bindtap="onShowAddModal">
+    <text>+ 添加周次</text>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="onHideAddModal">
+    <view class="modal-content" catchtap="">
+      <view class="modal-title">添加周次</view>
+      <view class="modal-body">
+        <view class="form-item">
+          <view class="form-label">周次序号</view>
+          <view class="form-value">第{{newWeekNumber}}周</view>
+        </view>
+        <view class="form-item">
+          <view class="form-label">周次名称</view>
+          <input 
+            class="form-input" 
+            placeholder="请输入周次名称" 
+            value="{{newWeekName}}"
+            bindinput="onWeekNameInput"
+          />
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="cancel-btn" bindtap="onHideAddModal">取消</button>
+        <button class="confirm-btn" bindtap="onAddWeek">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

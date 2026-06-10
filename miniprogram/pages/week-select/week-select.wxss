@@ -1,0 +1,182 @@
+/* pages/week-select/week-select.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.container {
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.week-list {
+  padding: 20rpx;
+}
+
+.week-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.week-item.active {
+  border-color: #4A90D9;
+  background-color: #f0f7ff;
+}
+
+.week-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.week-name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.week-tag {
+  padding: 6rpx 16rpx;
+  background-color: #4A90D9;
+  color: #fff;
+  font-size: 22rpx;
+  border-radius: 20rpx;
+}
+
+.week-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.delete-btn {
+  padding: 10rpx 20rpx;
+  color: #F56C6C;
+  font-size: 26rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 24rpx 60rpx;
+  background-color: #4A90D9;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 20rpx rgba(74, 144, 217, 0.4);
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-title {
+  padding: 30rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.form-value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  height: 70rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid #eee;
+}
+
+.cancel-btn, .confirm-btn {
+  flex: 1;
+  height: 90rpx;
+  font-size: 30rpx;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.cancel-btn {
+  color: #666;
+  border-right: 1rpx solid #eee;
+}
+
+.confirm-btn {
+  color: #4A90D9;
+}
