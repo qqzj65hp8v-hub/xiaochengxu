@@ -1,0 +1,36 @@
+<!--pages/settings/settings.wxml-->
+<view class="container">
+  <view class="stats-card">
+    <view class="stats-item">
+      <view class="stats-value">{{courseCount}}</view>
+      <view class="stats-label">课程数</view>
+    </view>
+    <view class="stats-divider"></view>
+    <view class="stats-item">
+      <view class="stats-value">{{weekCount}}</view>
+      <view class="stats-label">周次数</view>
+    </view>
+  </view>
+
+  <view class="settings-list">
+    <view class="settings-item" bindtap="onAbout">
+      <view class="item-left">
+        <text class="item-icon">ℹ️</text>
+        <text class="item-text">关于</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+
+    <view class="settings-item danger" bindtap="onClearData">
+      <view class="item-left">
+        <text class="item-icon">🗑️</text>
+        <text class="item-text">清空数据</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="version">
+    <text>v{{version}}</text>
+  </view>
+</view>
