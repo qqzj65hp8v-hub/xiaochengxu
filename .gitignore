@@ -1,0 +1,30 @@
+/*
+!miniprogram/images/*
+!cloudfunctions/*
+
+# 微信小程序
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+
+# 微信开发者工具
+.vscode/
+*.log
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+EhThumbs.db
+Desktop.ini
