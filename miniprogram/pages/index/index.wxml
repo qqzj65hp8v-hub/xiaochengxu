@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="week-selector" bindtap="onWeekChange">
+      <text class="week-name">{{currentWeekName}}</text>
+      <text class="week-arrow">▼</text>
+    </view>
+    <view class="add-btn" bindtap="goToAddCourse">
+      <text>+ 添加</text>
+    </view>
+  </view>
+
+  <view class="loading-container" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="timetable" wx:else>
+    <view class="timetable-header">
+      <view class="header-cell time-header">时间</view>
+      <view class="header-cell" wx:for="{{weekDays}}" wx:key="index">{{item}}</view>
+    </view>
+
+    <scroll-view scroll-y class="timetable-body">
+      <view class="timetable-row" wx:for="{{timeSlots}}" wx:for-index="rowIndex" wx:for-item="slot" wx:key="index">
+        <view class="time-cell">
+          <view class="slot-label">{{slot.label}}</view>
+          <view class="slot-time">{{slot.time}}</view>
+        </view>
+        <view class="day-cell" wx:for="{{7}}" wx:for-index="dayIndex" wx:key="index">
+          <view 
+            class="course-card" 
+            wx:for="{{tableData[dayIndex+1]}}" 
+            wx:for-item="course" 
+            wx:key="_id"
+            wx:if="{{course.startSlot <= rowIndex+1 && course.endSlot >= rowIndex+1}}"
+            style="background-color: {{course.color}};"
+            data-id="{{course._id}}"
+            bindtap="goToCourseDetail"
+          >
+            <view class="course-name" wx:if="{{course.startSlot === rowIndex+1}}">{{course.courseName}}</view>
+            <view class="course-location" wx:if="{{course.startSlot === rowIndex+1 && course.location}}">{{course.location}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!loading && courses.length === 0}}">
+    <text class="empty-text">暂无课程</text>
+    <text class="empty-tip">点击右上角"添加"按钮添加课程</text>
+  </view>
+</view>
